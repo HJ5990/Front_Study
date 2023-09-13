@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            animation: test1 5s linear infinite alternate ;
+        } 
+        @keyframes test1{
+        0%{
+            transform: translate(0.0);     
+        }
+        25%{
+            transform: translate(150px, 0px);
+            background-color: red;  
+        }
+        50%{
+            transform: translate(150px, 150px);
+            background-color: yellow;  
+        }
+        75%{
+            transform: translate(0px, 150px);
+            background-color: green;  
+        }
+    }
+    
+    </style>
+    
+</head>
+<body>
+    <div class="test"></div>
+</body>
+</html>

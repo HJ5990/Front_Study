@@ -1,0 +1,69 @@
+.a-button{
+    background-color: #4285f3;  /* 배경색상 */
+    color: white;  /* 폰트색상 */
+    border: 1px solid blue;  /* 테두리색상 */
+    border-radius: 30px;  /* 테두리모양 */
+    cursor: pointer;  /* 포인터모양 */
+
+    /* 요소 밖의 여백 */
+    margin-right: 10px;
+    margin-left: 30px;
+
+    /* 요소 안의 여백 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    /* padding: 20px 16px 20px 16;  top에서 시계방향으로*/
+    /* padding: 20px 16px;  위아래 , 좌우 */
+
+    transition: background-color 1s, color 1s;
+}
+
+.a-button:hover{    /*마우스 올렸을때*/
+    opacity: 0.7;   /*흐리게*/
+    background-color:blue;
+    scale: 0.98;    /* 크기변경 보통 0.98을 많이함*/
+}
+
+.a-button:active{    /*마우스 클릭했을때*/
+    opacity: 0.5;   
+}
+
+.b-button{
+    background-color: rgb(255, 255, 149);
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding : 10px 10px;
+
+}
+
+.b-button:hover{
+    background-color:rgb(255, 255, 0);
+    scale: 0.98; 
+}
+
+.b-button:active{
+    opacity: 0.7; 
+}
+
+
+.c-button{
+    display: block;
+    margin-top: 13px;
+    padding: 17px 0;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 4px;
+    background-color: #03c75a;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(3,199,90,.12);
+    box-shadow: 0 2px 4px 0 rgba(3,199,90,.12);
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
