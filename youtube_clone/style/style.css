@@ -1,0 +1,5 @@
+body{ 
+    margin: 0;  /*기본설정에 마진이 있어서 없애주는 작업*/
+    background: #181818;
+    color: white;
+}
