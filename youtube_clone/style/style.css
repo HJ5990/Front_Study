@@ -1,5 +1,15 @@
 body{ 
-    margin: 0;  /*기본설정에 마진이 있어서 없애주는 작업*/
+    margin: 0;
+    /*기본설정에 마진이 있어서 없애주는 작업*/
     background: #181818;
     color: white;
+    padding-top: 80px;
+    padding-left: 92px;
+    padding-right: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*P태그에 기본적으로 부여되어있는 마진 값을 0으로 설정*/
+p{
+    margin: 0;
 }
