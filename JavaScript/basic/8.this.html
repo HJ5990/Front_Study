@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
 <body>
     <script>
         /**
          * this
          * 
+<<<<<<< HEAD
          * JS는 정적 스코프를 사용하기 때문에 함수의 상위 스코프가 정의 시점에 평가된다.
          * 
          * 하지만 this키워드는 바인딩이 객체가 생성되는 시점에 결정된다.
@@ -19,6 +26,15 @@
          * */
 
         // const test = function () {
+=======
+         * JS는 정적스코프를 사용하기 때문에 함수의 상위 스코프가 정의 시점에 평가된다.
+         * 하지만 this 키워드는 객체가 생성되는 시점에 바인딩이 결정된다.
+         * (함수를 누가 호출했냐에 따라 this가 결정된다)
+         **/
+
+
+        // const test = function(){
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
         //     let tmp = 9999;
         //     function test2(){
         //         console.log(this);
@@ -31,6 +47,7 @@
         //     return this;
         // }
 
+<<<<<<< HEAD
         // console.log(test() === window)
 
         const human = {
@@ -39,6 +56,16 @@
             hello : function(){
                 console.log(this)
                 return `안녕하세요 ${this.name}입니다.`
+=======
+        // console.log(test() === window);
+
+
+        const human = {
+            name: 'sumin',
+            age: 55,
+            hello: function(){
+                return `안녕하세요 ${this.name} 입니다.`
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
             }
         }
 
@@ -49,16 +76,26 @@
             this.age = age;
 
             this.hello = function(){
+<<<<<<< HEAD
                 return `안녕하세요 ${this.name}입니다.`
             }
         }
 
+=======
+                return `안녕하세요 ${this.name} 입니다.`
+            }
+
+        }
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
         const human2 = new Human('성호', 40);
         console.log(human2.hello());
 
         human2.move = function(){
             function move2(){
+<<<<<<< HEAD
                 console.log(this)
+=======
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
                 return `${this.name}이 움직입니다`
             }
             return move2();
@@ -66,6 +103,7 @@
 
         console.log(human2.move());
 
+<<<<<<< HEAD
         /**
          * 
          * 1) 일반 함수 호출할땐 this가 최상위 객체(window)를 가리킨다.
@@ -90,3 +128,32 @@
 </body>
 
 </html>
+=======
+
+        /**
+         * 
+         * 1) 일반 함수 호출할 땐 this가 최상위객체(window)를 가리킨다.
+         * 2) 메서드로 호출할 땐 호출된 객체를 가리킨다.
+         * 3) 이벤트로 호출할 땐 이벤트를 일으킨 요소를 가리킨다.
+         * 
+         **/
+
+        /**
+         * apply, call, bind
+         **/
+
+         function getName(){
+            return this.name;
+         }
+
+        const human3 = new Human('민수', 12);
+        let getNameTmp = getName.bind(human3);
+        console.log(getNameTmp());
+
+
+
+    </script>
+</body>
+</html>
+
+>>>>>>> c54e3b3453d803672c667ff53734531daad97503
