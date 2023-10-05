@@ -1,4 +1,5 @@
 
+
 // 로컬스토로지에 'todoList'라는 키값으로 저장된 데이터가 있는지 확인하여 (삼항연산자)
 // true면 그 데이터 가져와서 JSON형식으로 파싱하여 todoList 에 저장(배열)
 // flase면 빈 배열을 할당 '[]' 하여 todoList 변수에 저장
@@ -11,33 +12,40 @@ window.onload = function(){
 }
 
 
+
+
+
 // input에 입력된 내용을 할일목록에 추가하기
 function addTodo(){
     //input에 입력된 내용(값)을 가져와 변수에 넣어준다
-    const todo = document.getElementById('search-input').value;
+    let todo = document.getElementById('search-input').value;
 
     // 혹 할일이 입력되지 않았다면 함수를 끝낸다.
-    if (todo.replace(/ /g,"") === '')
-    return;
+    if(todo.replace(/ /g,"") === '')
+        return;
 
     // 입력된 데이터를 객체화하여 todoList배열에 추가함 (push) 
     // date는 나중에 특정 데이터를 선택하기 위한 고유값으로 사용하기 위해서 넣어줌
     todoList.push({
-        title : todo, 
+        title : todo,
         date : new Date()
     })
 
     // input창에 적혀있는 내용을 지워줌
     document.getElementById('search-input').value = '';
 
+
     // 완성된(기존+추가된) todoList배열을 JSON형식으로 변환하여 로컬스토로지에 저장함 (setItem)
     // setItem(key, value) : key값은 'todoList' /  나중에 로컬에 저장된 배열을 찾을때 사용할 키값
-    localStorage.setItem('todoList', JSON.stringify(todoList))
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+
 
 
     // 완성된 todoList 를 화면에 그려주기 위한 함수 호출
     drawTodoList(document.getElementsByClassName('todo-list')[0], todoList);
+
 }
+
 
 
 // 할일 목록 그리기
@@ -47,41 +55,43 @@ function drawTodoList(parent, list){
     $(parent).empty();
     
     // list에 있는 배열의 크기만큼 반복 돌면서 
-    for (let unit of list) {
-        
+    for (let unit of list){
         // 할일목록을 표시해줄 li태그 생성한 뒤 변수에 넣어줌
-        const toDoLi = document.createElement('li');
+        let toDoLi = document.createElement('li');
         // toDoLi 요소에 'isDone' 이라는 사용자지정 속성을 추가하고 false 값 할당
         toDoLi.isDone = false;
         // 해당 unit의 title 값(할일내용)을 toDoLi(li)에 출력
         toDoLi.innerHTML = unit.title;
         // toDoLi 데이터를 parent(ul)태그의 자식으로 삽입
         parent.appendChild(toDoLi);
+    
 
 
 
         //할일목록을 지워줄 버튼을 만들어서 li태그 자식노드로 추가하기
-
         // div 생성하여 변수에 넣기
         const removeToDoli = document.createElement('div');
         // 해당요소에 className, innerHTML 추가
         removeToDoli.className = 'todo-remove-btn';
         removeToDoli.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-        // 해당 요소를 toDoLi(ul)태그의 자식으로 삽입
+
+        // 해당 요소를 toDoLi(li)태그의 자식으로 삽입
         toDoLi.appendChild(removeToDoli);
-9
+
 
         // toDoLi(li)클릭될때마다 isDone값을 반대로 변경해줌
-        toDoLi.onclick = function(ev){                
+        toDoLi.onclick = function(ev){
             ev.target.isDone = !ev.target.isDone;
-
             //isDone값에 따라서 done class를 부여해주거나 삭제해줌 (취소선 유무)
-            if (ev.target.isDone) {
+            if (ev.target.isDone){
                 ev.target.className = 'done';
             } else {
                 ev.target.classList.remove('done');
             }
         }
+
+
+
 
        
         // 삭제버튼 클릭했을때 함수
@@ -92,19 +102,17 @@ function drawTodoList(parent, list){
             //클릭된 요소의 부모요소를 삭제
             this.parentNode.remove();
 
-
-            // filter메소드 => 배열에서 조건에 맞는 값만 추릴때 사용
-            // 특정 자료를 삭제할때 많이 사용한다.
+            //filter메소드 => 배열서 조건에 맞는 값만 추릴때 사용
+            //특정 자료를 삭제할때 많이 사용한다.
             // true를 반환하는 항목만 새 배열에 포함시킴
-
             todoList = todoList.filter(function(data){
-                let tmpDate = new Date(data.date).getTime(); //우리가 엔터로 추가해준 배열 값
-                let unitTime = new Date(unit.date).getTime(); //우리가 클릭한얘
-         
-                return (tmpDate !== unitTime);
+                let ex1 = new Date(data.date).getTime();
+                let ex2 = new Date(unit.date).getTime();
+
+                return (ex1 !== ex2);
             })
-            localStorage.setItem('todoList', JSON.stringify(todoList))
-        }
+            localStorage.setItem('todoList', JSON.stringify(todoList));               
+        }     
     }
 
 }
@@ -115,3 +123,4 @@ function removeEvent(ev){
     ev.stopImmediatePropagation(); // 현재 이벤트가 상위뿐만아니라 현재레벨에 걸린 다른 이벤트도 동작하지 않도록 중단한다.
 
 }
+
