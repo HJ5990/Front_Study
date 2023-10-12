@@ -1,11 +1,33 @@
 let todoList = localStorage.getItem('todoList') ? JSON.parse(localStorage.getItem('todoList')) : [];
 
 
+function addTodo(ev){
+    if (document.getElementById('search-input').value.trim() === '')
+        return;
+
+    if (!ev.keyCode || ev.keyCode === 13) {
+        const todo = document.getElementById('search-input').value;
+
+        todoList.push({
+            title : todo,
+            date : new Date()
+        })
+
+        localStorage.setItem('todoList', JSON.stringify(todoList))
+        console.log(todo)
+    }
+
+
+    
+}
+
+
+
 
 
 
 // 할일추가
-function addTodo(ev){
+function addTod(ev){
 
     if (document.getElementById('search-input').value.trim() === '')
         return;
